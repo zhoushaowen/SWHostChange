@@ -32,6 +32,11 @@
         presentationController.presentedView.layer.cornerRadius = 5.0f;
         presentationController.presentedView.clipsToBounds = YES;
     } animatedTransitioningModel:[SWAnimtedTransitioningModel new] completion:nil];
+    if (@available(iOS 10.0, *)) {
+        UIImpactFeedbackGenerator *feedback = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
+        [feedback prepare];
+        [feedback impactOccurred];
+    }
 }
 
 @end

@@ -8,7 +8,7 @@
 
 #import "UIResponder+SWHostChange.h"
 #import <objc/runtime.h>
-#import <SWCustomPresentation/SWCustomPresentation.h>
+#import <SWCustomPresentation.h>
 #import "SWHostChangeViewController.h"
 #import "SWHostChangeManager.h"
 

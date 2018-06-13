@@ -17,6 +17,8 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/zhoushaowen/SWHostChange.git", :tag => s.version }
   
   s.source_files  = "SWHostChange/SWHostChange/*.{h,m}"
+
+  s.dependency 'SWCustomPresentation'
   
   s.requires_arc = true
 

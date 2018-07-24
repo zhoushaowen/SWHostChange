@@ -51,9 +51,8 @@
         str = [[str substringToIndex:str.length - 1] mutableCopy];
     }
     cell.detailTextLabel.text = str;
-    [host setValue:@(indexPath.row) forKey:@"ID"];
     cell.accessoryType = UITableViewCellAccessoryNone;
-    if([[host valueForKey:@"ID"] integerValue] == [[[SWHostChangeManager sharedInstance].currentHost valueForKey:@"ID"] integerValue]){
+    if([host isEqual:[SWHostChangeManager sharedInstance].currentHost]){
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     return cell;

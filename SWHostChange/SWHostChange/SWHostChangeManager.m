@@ -7,6 +7,7 @@
 //
 
 #import "SWHostChangeManager.h"
+#import "SWHost.h"
 
 static SWHostChangeManager *SharedManager = nil;
 
@@ -37,8 +38,25 @@ static SWHostChangeManager *SharedManager = nil;
 - (SWHost *)currentHost {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        __block BOOL flag = NO;
         NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"SWHOST"];
-        self->_currentHost = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        self->_currentHost = [NSKeyedUnarchiver unarchiveObjectWithData:data?:NSData.new];
+        if(self->_currentHost){
+            [self.hostGroup enumerateObjectsUsingBlock:^(SWHost * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if([self->_currentHost isEqual:obj]){
+                    flag = YES;
+                    *stop = YES;
+                }
+            }];
+            if(flag){
+                NSLog(@"本地的host和设置的Host相匹配");
+            }else{
+                NSLog(@"本地的host和设置的Host不匹配,将选择默认第一个Host");
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"SWHOST"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                self->_currentHost = [self.hostGroup firstObject];
+            }
+        }
     });
     if(_currentHost == nil){
         _currentHost = [_hostGroup firstObject];
@@ -61,4 +79,40 @@ static SWHostChangeManager *SharedManager = nil;
     return _hostGroup;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

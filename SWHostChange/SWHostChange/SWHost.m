@@ -10,8 +10,6 @@
 
 @interface SWHost ()
 
-@property (nonatomic) NSInteger ID;
-
 @end
 
 @implementation SWHost
@@ -30,7 +28,6 @@
     if(self){
         self.name = [aDecoder decodeObjectForKey:@"name"];
         self.info = [aDecoder decodeObjectForKey:@"info"];
-        self.ID = [aDecoder decodeIntegerForKey:@"ID"];
     }
     return self;
 }
@@ -38,7 +35,16 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.name forKey:@"name"];
     [aCoder encodeObject:self.info forKey:@"info"];
-    [aCoder encodeInteger:self.ID forKey:@"ID"];
+}
+
+- (BOOL)isEqual:(id)object {
+    if(object == nil) return NO;
+    if(self == object) return YES;
+    if(![object isKindOfClass:[SWHost class]]){
+        return NO;
+    }
+    if(!((SWHost *)object).info) return NO;
+    return [self.info isEqualToDictionary:((SWHost *)object).info];
 }
 
 

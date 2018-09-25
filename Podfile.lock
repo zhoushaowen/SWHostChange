@@ -1,14 +1,18 @@
 PODS:
+  - MarqueeLabel (3.1.6):
+    - MarqueeLabel/ObjC (= 3.1.6)
+  - MarqueeLabel/ObjC (3.1.6)
   - SWCustomPresentation (0.0.4)
-  - SWHostChange (0.0.1):
+  - SWHostChange (0.0.3):
+    - MarqueeLabel
     - SWCustomPresentation
 
 DEPENDENCIES:
-  - SWCustomPresentation
   - SWHostChange (from `./`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - MarqueeLabel
     - SWCustomPresentation
 
 EXTERNAL SOURCES:
@@ -16,9 +20,10 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
+  MarqueeLabel: 0c41f08ef5773e29c0f71064a8fa788a2fd8b365
   SWCustomPresentation: f7fe50b7fa4b6f660b13f26d61285924c4e75668
-  SWHostChange: 7f434e833c4e2d35e28039abf433e830fc685f85
+  SWHostChange: c986bd8f5ed1e522c7982e492ef4e9bc18f366de
 
-PODFILE CHECKSUM: 73fbe1ad2a57ad0320559f412e8091a1bbd451ea
+PODFILE CHECKSUM: afe66f39b4f84aa2f43a21550218f1d04e4cee7b
 
 COCOAPODS: 1.5.3

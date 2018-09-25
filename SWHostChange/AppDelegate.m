@@ -21,7 +21,12 @@
     SWHost *host1 = [[SWHost alloc] initWithName:@"开发地址" info:@{@"host":@"http://www.develop.com",@"imageUrl":@"http://www.develop.com"}];
     SWHost *host2 = [[SWHost alloc] initWithName:@"测试地址" info:@{@"host":@"http://www.test.com",@"imageUrl":@"http://www.test.com"}];
     SWHost *host3 = [[SWHost alloc] initWithName:@"正式地址" info:@{@"host":@"http://www.production.com",@"imageUrl":@"http://www.production.com"}];
-    [[SWHostChangeManager sharedInstance] setHostGroup:@[host1,host2,host3]];
+    SWHost *host4 = [[SWHost alloc] initWithName:@"正式地址2" info:@{@"host":@"http://www.production.com",@"imageUrl":@"http://www.production.com"}];
+    SWHost *host5 = [[SWHost alloc] initWithName:@"正式地址3" info:@{@"host":@"http://www.production.com",@"imageUrl":@"http://www.production.com"}];
+    SWHost *host6 = [[SWHost alloc] initWithName:@"正式地址4" info:@{@"host":@"http://www.production.com",@"imageUrl":@"http://www.production.com"}];
+    SWHost *host7 = [[SWHost alloc] initWithName:@"正式地址5" info:@{@"host":@"http://www.production.com",@"imageUrl":@"http://www.production.com"}];
+    SWHost *host8 = [[SWHost alloc] initWithName:@"正式地址6" info:@{@"host":@"http://www.production.com",@"imageUrl":@"http://www.production.com"}];
+    [[SWHostChangeManager sharedInstance] setHostGroup:@[host1,host2,host3,host4,host5,host6,host7,host8]];
     
     NSLog(@"name:%@-------host:%@",[SWHostChangeManager sharedInstance].currentHost.name,[SWHostChangeManager sharedInstance].currentHost.info[@"host"]);
     return YES;

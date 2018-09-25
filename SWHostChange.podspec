@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name         = "SWHostChange"
 
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
 
   s.homepage      = 'https://github.com/zhoushaowen/SWHostChange'
 
@@ -19,6 +19,8 @@ Pod::Spec.new do |s|
   s.source_files  = "SWHostChange/SWHostChange/*.{h,m}"
 
   s.dependency 'SWCustomPresentation'
+
+  s.dependency 'MarqueeLabel'
   
   s.requires_arc = true
 

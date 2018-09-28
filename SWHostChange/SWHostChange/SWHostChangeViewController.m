@@ -23,6 +23,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         MarqueeLabel *label = [[MarqueeLabel alloc] initWithFrame:self.detailTextLabel.frame];
+        label.rate = 25;
         [self.contentView addSubview:label];
         self.animationLabel = label;
         self.animationLabel.font = self.detailTextLabel.font;

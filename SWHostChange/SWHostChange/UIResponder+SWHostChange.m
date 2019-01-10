@@ -15,15 +15,18 @@
 @implementation UIResponder (SWHostChange)
 
 + (void)load {
-    SEL sysSel = @selector(motionBegan:withEvent:);
-    SEL cusSel = @selector(sw_motionBegan:withEvent:);
-    Method method1 = class_getInstanceMethod([self class], sysSel);
-    Method method2 = class_getInstanceMethod([self class], cusSel);
-    if(class_addMethod([self class], sysSel, method_getImplementation(method2), method_getTypeEncoding(method2))){
-        class_replaceMethod([self class], cusSel, method_getImplementation(method1), method_getTypeEncoding(method1));
-    }else{
-        method_exchangeImplementations(method1, method2);
-    }
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        SEL sysSel = @selector(motionBegan:withEvent:);
+        SEL cusSel = @selector(sw_motionBegan:withEvent:);
+        Method method1 = class_getInstanceMethod([self class], sysSel);
+        Method method2 = class_getInstanceMethod([self class], cusSel);
+        if(class_addMethod([self class], sysSel, method_getImplementation(method2), method_getTypeEncoding(method2))){
+            class_replaceMethod([self class], cusSel, method_getImplementation(method1), method_getTypeEncoding(method1));
+        }else{
+            method_exchangeImplementations(method1, method2);
+        }
+    });
 }
 
 - (void)sw_motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {

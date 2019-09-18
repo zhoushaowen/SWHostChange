@@ -8,10 +8,14 @@
 
 #import "SWHostChangeManager.h"
 #import "SWHost.h"
+#import <SAMKeychain.h>
 
 static SWHostChangeManager *SharedManager = nil;
 
 @implementation SWHostChangeManager
+{
+    NSString *_bundleId;
+}
 
 @synthesize currentHost = _currentHost;
 
@@ -35,11 +39,20 @@ static SWHostChangeManager *SharedManager = nil;
     return SharedManager;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _bundleId = [[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleIdentifier"];
+    }
+    return self;
+}
+
 - (SWHost *)currentHost {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         __block BOOL flag = NO;
-        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"SWHOST"];
+        NSData *data = [SAMKeychain passwordDataForService:self->_bundleId account:@"SWHOST"];
         self->_currentHost = [NSKeyedUnarchiver unarchiveObjectWithData:data?:NSData.new];
         if(self->_currentHost){
             [self.hostGroup enumerateObjectsUsingBlock:^(SWHost * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -52,8 +65,7 @@ static SWHostChangeManager *SharedManager = nil;
                 NSLog(@"本地的host和设置的Host相匹配");
             }else{
                 NSLog(@"本地的host和设置的Host不匹配,将选择默认第一个Host");
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"SWHOST"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
+                [SAMKeychain deletePasswordForService:self->_bundleId account:@"SWHOST"];
                 self->_currentHost = [self.hostGroup firstObject];
             }
         }
@@ -67,8 +79,7 @@ static SWHostChangeManager *SharedManager = nil;
 - (void)setCurrentHost:(SWHost *)currentHost {
     _currentHost = currentHost;
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:_currentHost];
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"SWHOST"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [SAMKeychain setPasswordData:data forService:_bundleId account:@"SWHOST"];
     abort();
 }
 

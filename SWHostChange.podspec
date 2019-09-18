@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name         = "SWHostChange"
 
-  s.version      = "0.0.8"
+  s.version      = "0.0.9"
 
   s.homepage      = 'https://github.com/zhoushaowen/SWHostChange'
 
@@ -21,7 +21,8 @@ Pod::Spec.new do |s|
   s.dependency 'SWCustomPresentation'
 
   s.dependency 'MarqueeLabel/ObjC'
-  
+  s.dependency 'SAMKeychain'
+ 
   s.requires_arc = true
 
 end

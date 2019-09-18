@@ -1,8 +1,10 @@
 PODS:
   - MarqueeLabel/ObjC (3.1.6)
+  - SAMKeychain (1.5.3)
   - SWCustomPresentation (0.0.4)
-  - SWHostChange (0.0.8):
+  - SWHostChange (0.0.9):
     - MarqueeLabel/ObjC
+    - SAMKeychain
     - SWCustomPresentation
 
 DEPENDENCIES:
@@ -11,6 +13,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - MarqueeLabel
+    - SAMKeychain
     - SWCustomPresentation
 
 EXTERNAL SOURCES:
@@ -19,8 +22,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   MarqueeLabel: 0c41f08ef5773e29c0f71064a8fa788a2fd8b365
+  SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SWCustomPresentation: f7fe50b7fa4b6f660b13f26d61285924c4e75668
-  SWHostChange: 201d94c871527026ea21a2f798556b4d830c4aeb
+  SWHostChange: 9ac0cda7b40a3819961e775003231d2850b5793c
 
 PODFILE CHECKSUM: afe66f39b4f84aa2f43a21550218f1d04e4cee7b
 

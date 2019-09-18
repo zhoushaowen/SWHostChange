@@ -103,7 +103,7 @@
     if(header == nil){
         header = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:Header];
     }
-    header.textLabel.text = [NSString stringWithFormat:@"当前选择的Host:%@",[SWHostChangeManager sharedInstance].currentHost.name];
+    header.textLabel.text = [NSString stringWithFormat:@"当前选择的是:%@",[SWHostChangeManager sharedInstance].currentHost.name];
     return header;
 }
 

@@ -1,10 +1,8 @@
 PODS:
-  - MarqueeLabel (3.1.6):
-    - MarqueeLabel/ObjC (= 3.1.6)
   - MarqueeLabel/ObjC (3.1.6)
   - SWCustomPresentation (0.0.4)
-  - SWHostChange (0.0.3):
-    - MarqueeLabel
+  - SWHostChange (0.0.8):
+    - MarqueeLabel/ObjC
     - SWCustomPresentation
 
 DEPENDENCIES:
@@ -22,8 +20,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   MarqueeLabel: 0c41f08ef5773e29c0f71064a8fa788a2fd8b365
   SWCustomPresentation: f7fe50b7fa4b6f660b13f26d61285924c4e75668
-  SWHostChange: c986bd8f5ed1e522c7982e492ef4e9bc18f366de
+  SWHostChange: 201d94c871527026ea21a2f798556b4d830c4aeb
 
 PODFILE CHECKSUM: afe66f39b4f84aa2f43a21550218f1d04e4cee7b
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.5

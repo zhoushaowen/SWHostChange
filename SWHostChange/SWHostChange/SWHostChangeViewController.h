@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SWHostChangeViewController : UIViewController
-
++ (void)showWithDismissGestureEnable:(BOOL)enable;
 @end

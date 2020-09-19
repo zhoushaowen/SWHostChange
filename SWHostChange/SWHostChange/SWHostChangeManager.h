@@ -22,7 +22,7 @@
 @property (nonatomic,copy) NSArray<SWHost *> *hostGroup;
 
 /**
- 当前选中的Host,默认选中的是列表中第一个Host
+ 当前选中的Host,默认没有选中
  */
 @property (nonatomic,strong) SWHost *currentHost;
 

@@ -106,7 +106,6 @@
 				361059BD20CFAB7600112CEF /* Sources */,
 				361059BE20CFAB7600112CEF /* Frameworks */,
 				361059BF20CFAB7600112CEF /* Resources */,
-				02080AF79907DE523D33CD0E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -163,23 +162,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		02080AF79907DE523D33CD0E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SWHostChange/Pods-SWHostChange-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SWHostChange/Pods-SWHostChange-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SWHostChange/Pods-SWHostChange-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5125B549C307F9AC0F2BBECF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

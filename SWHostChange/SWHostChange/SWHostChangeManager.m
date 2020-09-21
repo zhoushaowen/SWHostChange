@@ -11,6 +11,8 @@
 //#import <SAMKeychain.h>
 #import "SWHostChangeViewController.h"
 
+NSString *const SWHostDidChangeNotification = @"SWHostDidChangeNotification";
+
 static SWHostChangeManager *SharedManager = nil;
 
 @implementation SWHostChangeManager
@@ -49,7 +51,7 @@ static SWHostChangeManager *SharedManager = nil;
         __weak typeof(self) weakSelf = self;
         _observer = [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
-            if(strongSelf.currentHost == nil){
+            if(strongSelf.currentHost == nil && self.enable){
                 [SWHostChangeViewController showWithDismissGestureEnable:NO];
             }
         }];
@@ -91,7 +93,7 @@ static SWHostChangeManager *SharedManager = nil;
 //    if(_currentHost == nil){
 //        _currentHost = [_hostGroup firstObject];
 //    }
-    return _currentHost;
+    return self.enable?_currentHost:nil;
 }
 
 - (void)setCurrentHost:(SWHost *)currentHost {
@@ -100,6 +102,7 @@ static SWHostChangeManager *SharedManager = nil;
 //    [SAMKeychain setPasswordData:data forService:_bundleId account:@"SWHOST"];
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:_bundleId];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:SWHostDidChangeNotification object:self userInfo:currentHost?@{@"currentHost":currentHost}:nil];
     abort();
 }
 

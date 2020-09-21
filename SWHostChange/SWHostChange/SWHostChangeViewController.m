@@ -54,7 +54,7 @@
     [[[UIApplication sharedApplication].delegate window].rootViewController sw_presentCustomModalPresentationWithViewController:[SWHostChangeViewController new] containerViewWillLayoutSubViewsBlock:^(SWPresentationController * _Nonnull presentationController) {
         CGFloat width = [UIScreen mainScreen].bounds.size.width;
         CGFloat height = [UIScreen mainScreen].bounds.size.height;
-        presentationController.presentedView.bounds = CGRectMake(0, 0, width-40, 500);
+        presentationController.presentedView.bounds = CGRectMake(0, 0, width-40, 400);
         presentationController.presentedView.center = CGPointMake(width/2.0f, height/2.0f);
         presentationController.presentedView.layer.cornerRadius = 5.0f;
         presentationController.presentedView.clipsToBounds = YES;

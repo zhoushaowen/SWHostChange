@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const SWHostDidChangeNotification;
+
 @class SWHost;
 
 @interface SWHostChangeManager : NSObject
@@ -15,7 +17,7 @@
 + (instancetype)sharedInstance;
 
 /**
- 是否开启Host切换
+ 是否开启Host切换 默认为NO
  */
 @property (nonatomic) BOOL enable;
 

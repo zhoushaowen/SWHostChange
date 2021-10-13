@@ -20,6 +20,8 @@ extern NSString *const SWHostDidChangeNotification;
  是否开启Host切换 默认为NO
  */
 @property (nonatomic) BOOL enable;
+/// 如果app启动之后currentHost为空,是否自动弹出SWHostChangeViewController 默认是YES
+@property (nonatomic) BOOL automaticShowHostChangeVCAfterAppLaunchIfCurrentHostIsNil;
 
 @property (nonatomic,copy) NSArray<SWHost *> *hostGroup;
 

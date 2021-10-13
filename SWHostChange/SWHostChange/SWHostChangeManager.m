@@ -47,11 +47,12 @@ static SWHostChangeManager *SharedManager = nil;
 {
     self = [super init];
     if (self) {
+        self.automaticShowHostChangeVCAfterAppLaunchIfCurrentHostIsNil = YES;
         _bundleId = [[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleIdentifier"];
         __weak typeof(self) weakSelf = self;
         _observer = [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
-            if(strongSelf.currentHost == nil && self.enable){
+            if(strongSelf.currentHost == nil && self.enable && self.automaticShowHostChangeVCAfterAppLaunchIfCurrentHostIsNil){
                 [SWHostChangeViewController showWithDismissGestureEnable:NO];
             }
         }];
@@ -97,7 +98,9 @@ static SWHostChangeManager *SharedManager = nil;
 }
 
 - (void)setCurrentHost:(SWHost *)currentHost {
+    [self willChangeValueForKey:@"currentHost"];
     _currentHost = currentHost;
+    [self didChangeValueForKey:@"currentHost"];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:_currentHost];
 //    [SAMKeychain setPasswordData:data forService:_bundleId account:@"SWHOST"];
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:_bundleId];

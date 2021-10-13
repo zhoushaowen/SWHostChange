@@ -13,6 +13,7 @@
 
 #import "SWHostChangeManager.h"
 #import "SWHost.h"
+#import "SWHostChangeViewController.h"
 
 #endif
 
